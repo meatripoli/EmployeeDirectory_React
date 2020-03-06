@@ -5,7 +5,20 @@ import Nav from './Components/Nav';
 function App() {
   return ( <>
       <Nav />
-      <APISearch />
+      <table className="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Picture</th>
+                <th scope="col">Name</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Email</th>
+                <th scope="col">Birthday</th>
+            </tr>
+        </thead>
+        <tbody>
+            <APISearch />
+        </tbody>
+    </table>
     </>
   );
 }
