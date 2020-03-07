@@ -8,10 +8,14 @@ const url = "https://randomuser.me/api/?results=50";
 function Search() {
     const [search,setSearch] = useState('');
     const [results, setResults] = useState(null);
+    const [filtered, setFiltered] = useState(null)
     //loads data initially
     useEffect(() => {
         API.top50Results(url)
-        .then(res => {setResults(res.data.results)})
+        .then(res => {
+          setResults(res.data.results);
+          setFiltered(res.data.results);
+        })
         .catch(err => console.log('Error:',err))
     },[]);
 
@@ -25,13 +29,14 @@ function Search() {
         console.log('searchng for',search)
         ///filter and then setResults
         //setResults(results.filter(element => element.name.first === search));
-        setResults(results.filter(element => element.name.first.includes(search)));
+        //setResults(results.filter(element => element.name.first.includes(search)));
+        setFiltered(results.filter(element => element.name.first.includes(search)));
     }
 
     return (
         <>
         <SearchBar handleInputChange={handleInputChange} search={search} handleFormSubmit={handleFormSubmit}/>
-        <TableShell data={results}/>
+        <TableShell data={filtered}/>
         </>
     );
 };
