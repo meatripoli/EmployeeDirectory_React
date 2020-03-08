@@ -1,5 +1,6 @@
 import React from 'react';
 import TableBody from './TableBody';
+import "./table.css";
 
 function TableShell(prop){
     return (
@@ -7,7 +8,7 @@ function TableShell(prop){
             <thead>
                 <tr>
                     <th scope="col">Picture</th>
-                    <th scope="col">Name</th>
+                    <th scope="col" className={prop.sortClass} onClick={prop.handleSort}>Name</th>
                     <th scope="col">Phone</th>
                     <th scope="col">Email</th>
                     <th scope="col">Birthday</th>
